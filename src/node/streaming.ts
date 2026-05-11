@@ -2,7 +2,7 @@
  * Node.js Streaming Support for KoreShield
  */
 
-import { Readable, Transform } from 'stream';
+import { Readable, Transform, type TransformCallback } from 'stream';
 import axios, { AxiosInstance } from 'axios';
 import {
   ChatCompletionRequest,
@@ -124,7 +124,7 @@ export class StreamingClient {
 
     return new Transform({
       objectMode: true,
-      transform(chunk: Buffer, encoding: string, callback: Function) {
+      transform(chunk: Buffer, encoding: string, callback: TransformCallback) {
         buffer += chunk.toString();
         const lines = buffer.split('\n');
         buffer = lines.pop() || '';
