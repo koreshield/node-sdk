@@ -3,7 +3,7 @@
  */
 
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Observable, interval, Subject } from 'rxjs';
+import { BehaviorSubject, interval, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { KoreShieldClient } from '../core/client';
 import {

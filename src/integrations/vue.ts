@@ -2,7 +2,7 @@
  * Vue 3 Composables for KoreShield
  */
 
-import { ref, computed, onMounted, onUnmounted, watch, Ref } from 'vue';
+import { ref, onMounted, onUnmounted, watch, Ref } from 'vue';
 import { KoreShieldClient } from '../core/client';
 import {
   KoreShieldConfig,

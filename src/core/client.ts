@@ -225,7 +225,7 @@ export class KoreShieldClient {
           completed++;
           if (progressCallback) progressCallback(completed, prompts.length);
         }
-      } catch (error) {
+      } catch (_error) {
         // Fall back to individual scans for this chunk on error
         for (const prompt of chunk) {
           try {

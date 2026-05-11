@@ -34,7 +34,7 @@ const DEFAULT_RETRY_OPTIONS: Required<RetryOptions> = {
   maxDelay: 10000,
   backoffMultiplier: 2,
   retryableStatusCodes: [408, 429, 500, 502, 503, 504],
-  isRetryable: (error) => true,
+  isRetryable: (_error) => true,
   onRetry: () => {}
 };
 
