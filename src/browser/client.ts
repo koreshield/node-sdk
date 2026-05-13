@@ -210,13 +210,12 @@ export class BrowserKoreShieldClient {
   private getHeaders(customHeaders?: Record<string, string>): Record<string, string> {
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      'User-Agent': 'KoreShield-JS-Browser/0.3.5',
       ...this.config.headers,
       ...customHeaders
     };
 
-    if (this.config.apiKey && !headers['Authorization']) {
-      headers['Authorization'] = `Bearer ${this.config.apiKey}`;
+    if (this.config.apiKey && !headers['X-API-Key'] && !headers['Authorization']) {
+      headers['X-API-Key'] = this.config.apiKey;
     }
 
     return headers;

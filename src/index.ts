@@ -46,32 +46,6 @@ export {
 } from './utils/recovery';
 export type { RetryOptions, CircuitBreakerOptions } from './utils/recovery';
 
-// Framework integrations - React
-export {
-  useKoreShield,
-  useChatCompletion,
-  useStreamingChat,
-  useSecurityEvents,
-  useMetrics
-} from './integrations/react';
-
-// Framework integrations - Vue
-export {
-  useKoreShield as useKoreShieldVue,
-  useChatCompletion as useChatCompletionVue,
-  useStreamingChat as useStreamingChatVue,
-  useSecurityEvents as useSecurityEventsVue,
-  useMetrics as useMetricsVue
-} from './integrations/vue';
-
-// Framework integrations - Angular (services)
-export {
-  KoreShieldService,
-  ChatCompletionService,
-  SecurityEventsService,
-  MetricsService
-} from './integrations/angular';
-
 // Types
 export {
   ThreatLevel,

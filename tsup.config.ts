@@ -3,7 +3,12 @@ import { defineConfig } from 'tsup'
 export default defineConfig([
   // Main build for Node.js
   {
-    entry: ['src/index.ts'],
+    entry: {
+      index: 'src/index.ts',
+      'integrations/react': 'src/integrations/react.ts',
+      'integrations/vue': 'src/integrations/vue.ts',
+      'integrations/angular': 'src/integrations/angular.ts',
+    },
     format: ['cjs', 'esm'],
     dts: true,
     splitting: false,

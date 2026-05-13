@@ -1,16 +1,36 @@
 {
   "name": "koreshield",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "JavaScript/TypeScript SDK for KoreShield LLM Security Platform - Enhanced with browser optimization, streaming, and framework integrations",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "browser": "dist/browser/index.js",
+  "browser": "./dist/browser/index.mjs",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
+    },
+    "./browser": {
+      "types": "./dist/browser/index.d.ts",
+      "import": "./dist/browser/index.mjs",
+      "default": "./dist/browser/index.mjs"
+    },
+    "./react": {
+      "types": "./dist/integrations/react.d.ts",
+      "import": "./dist/integrations/react.mjs",
+      "require": "./dist/integrations/react.js"
+    },
+    "./vue": {
+      "types": "./dist/integrations/vue.d.ts",
+      "import": "./dist/integrations/vue.mjs",
+      "require": "./dist/integrations/vue.js"
+    },
+    "./angular": {
+      "types": "./dist/integrations/angular.d.ts",
+      "import": "./dist/integrations/angular.mjs",
+      "require": "./dist/integrations/angular.js"
     }
   },
   "scripts": {

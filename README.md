@@ -30,6 +30,15 @@ yarn add koreshield
 pnpm add koreshield
 ```
 
+Optional framework helpers are exposed as subpath imports so the core SDK does
+not require React, Vue, Angular, or RxJS in plain Node.js projects:
+
+```typescript
+import { useKoreShield } from 'koreshield/react';
+import { useKoreShield as useKoreShieldVue } from 'koreshield/vue';
+import { KoreShieldService } from 'koreshield/angular';
+```
+
 ## Quick Start
 
 ### Node.js

@@ -23,6 +23,7 @@ export interface StreamOptions {
 export class StreamingClient {
   private client: AxiosInstance;
   private config: Required<KoreShieldConfig>;
+  private hasCustomAuthorization: boolean;
 
   constructor(config: KoreShieldConfig) {
     this.config = {
@@ -32,19 +33,20 @@ export class StreamingClient {
       debug: config.debug || false,
       headers: config.headers || {}
     };
+    this.hasCustomAuthorization = !!this.config.headers['Authorization'];
 
     this.client = axios.create({
       baseURL: this.config.baseURL,
       timeout: this.config.timeout,
       headers: {
         'Content-Type': 'application/json',
-        'User-Agent': 'KoreShield-JS-Node/0.3.5',
+        'User-Agent': 'koreshield-node-sdk/0.3.12',
         ...this.config.headers
       }
     });
 
-    if (this.config.apiKey) {
-      this.client.defaults.headers.common['Authorization'] = `Bearer ${this.config.apiKey}`;
+    if (this.config.apiKey && !this.hasCustomAuthorization) {
+      this.client.defaults.headers.common['X-API-Key'] = this.config.apiKey;
     }
   }
 
