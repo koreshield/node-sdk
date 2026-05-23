@@ -20,6 +20,8 @@ import {
   RAGScanResponse,
   RAGScanConfig,
   RAGBatchScanItem,
+  AudioScanRequest,
+  AudioScanResponse,
   PreflightScanResult,
   ToolCallPreflightResult,
   RAGPreflightResult,
@@ -692,6 +694,33 @@ export class KoreShieldClient {
   /** Get RAG scan history */
   async getRagScanHistory(params?: { limit?: number; offset?: number }): Promise<Record<string, any>> {
     try { return (await this.client.get('/v1/rag/scans', { params })).data; } catch (e: any) { throw this.handleError(e); }
+  }
+
+  async scanAudio(payload: AudioScanRequest): Promise<AudioScanResponse> {
+    try {
+      const response = await this.client.post('/v1/audio/scan', payload, {
+        validateStatus: (status) => status === 200 || status === 403,
+      });
+      return response.data;
+    } catch (e: any) {
+      throw this.handleError(e);
+    }
+  }
+
+  async getAudioScanHistory(params?: { limit?: number; offset?: number }): Promise<Record<string, any>> {
+    try { return (await this.client.get('/v1/audio/scans', { params })).data; } catch (e: any) { throw this.handleError(e); }
+  }
+
+  async getAudioScan(scanId: string): Promise<Record<string, any>> {
+    try { return (await this.client.get(`/v1/audio/scans/${scanId}`)).data; } catch (e: any) { throw this.handleError(e); }
+  }
+
+  async deleteAudioScan(scanId: string): Promise<Record<string, any>> {
+    try { return (await this.client.delete(`/v1/audio/scans/${scanId}`)).data; } catch (e: any) { throw this.handleError(e); }
+  }
+
+  async clearAudioScans(): Promise<Record<string, any>> {
+    try { return (await this.client.delete('/v1/audio/scans')).data; } catch (e: any) { throw this.handleError(e); }
   }
 
   /** List tool sessions */

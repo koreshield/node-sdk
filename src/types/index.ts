@@ -570,3 +570,56 @@ export interface RAGBatchScanItem {
   /** Optional config override */
   config?: RAGScanConfig;
 }
+
+export interface AudioMetadata {
+  overlapping_speakers?: boolean;
+  background_speech_detected?: boolean;
+  synthetic_voice_detected?: boolean;
+  ultrasonic_or_high_frequency_content?: boolean;
+  abrupt_hidden_segments?: boolean;
+  music_or_noise_masking_speech?: boolean;
+  speaker_mismatch?: boolean;
+}
+
+export interface AudioAsrContext {
+  primary?: string;
+  transcript?: string;
+  alternatives?: string[];
+  confidence?: number;
+}
+
+export interface AudioScanRequest {
+  transcript?: string;
+  alternatives?: string[];
+  asr?: AudioAsrContext;
+  source_type?: string;
+  channel?: string;
+  speaker_verified?: boolean;
+  known_user?: boolean;
+  confidence?: number;
+  audio_metadata?: AudioMetadata;
+  tools_available?: string[];
+  intended_use?: string;
+}
+
+export interface AudioToolPolicy {
+  allow_tool_calls: boolean;
+  allow_llm_response: boolean;
+  requires_human_confirmation: boolean;
+  treat_transcript_as?: string;
+}
+
+export interface AudioScanResponse {
+  scan_id?: string;
+  timestamp?: string;
+  processing_time_ms?: number;
+  is_safe: boolean;
+  risk_level: string;
+  decision: string;
+  threats?: Array<Record<string, unknown>>;
+  audio_analysis?: Record<string, unknown>;
+  transcript_analysis?: Record<string, unknown>;
+  intent_analysis?: Record<string, unknown>;
+  safe_transcript?: string;
+  tool_policy?: AudioToolPolicy;
+}

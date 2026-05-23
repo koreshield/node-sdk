@@ -91,6 +91,8 @@ export type {
   RAGScanResponse,
   RAGScanRequest,
   RAGBatchScanItem,
+  AudioScanRequest,
+  AudioScanResponse,
   ToolScanPolicyResult,
   ToolScanRequest,
   ToolScanResponse,
