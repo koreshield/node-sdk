@@ -586,6 +586,11 @@ export interface AudioAsrContext {
   transcript?: string;
   alternatives?: string[];
   confidence?: number;
+  provider?: string;
+  duration_seconds?: number;
+  segment_count?: number;
+  speech_segments?: Array<Record<string, unknown>>;
+  word_timestamps?: Array<Record<string, unknown>>;
 }
 
 export interface AudioScanRequest {
@@ -593,6 +598,8 @@ export interface AudioScanRequest {
   policy?: Record<string, unknown>;
   audio_policy?: Record<string, unknown>;
   transcript?: string;
+  audio_url?: string;
+  audio_base64?: string;
   alternatives?: string[];
   asr?: AudioAsrContext;
   source_type?: string;
