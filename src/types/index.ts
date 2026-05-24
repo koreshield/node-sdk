@@ -589,6 +589,9 @@ export interface AudioAsrContext {
 }
 
 export interface AudioScanRequest {
+  policy_id?: string;
+  policy?: Record<string, unknown>;
+  audio_policy?: Record<string, unknown>;
   transcript?: string;
   alternatives?: string[];
   asr?: AudioAsrContext;
@@ -606,6 +609,8 @@ export interface AudioToolPolicy {
   allow_tool_calls: boolean;
   allow_llm_response: boolean;
   requires_human_confirmation: boolean;
+  redact_pii?: boolean;
+  policy_id?: string;
   treat_transcript_as?: string;
 }
 
@@ -619,6 +624,8 @@ export interface AudioScanResponse {
   threats?: Array<Record<string, unknown>>;
   audio_analysis?: Record<string, unknown>;
   transcript_analysis?: Record<string, unknown>;
+  pii_analysis?: Record<string, unknown>;
+  policy?: Record<string, unknown>;
   intent_analysis?: Record<string, unknown>;
   safe_transcript?: string;
   tool_policy?: AudioToolPolicy;
